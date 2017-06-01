@@ -15,7 +15,8 @@ const Wrapper = styled.header`
   padding: 1em;
 `
 const Title = styled.h1`
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1000px;
 `
 const Light = styled.span`
   font-weight: lighter;
