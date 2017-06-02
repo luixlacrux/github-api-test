@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import GistItem from '../components/GistItem'
@@ -11,6 +12,10 @@ const Gists = ({ gists }) => {
       )}
     </List>
   )
+}
+
+Gists.propTypes = {
+  gists: PropTypes.array.isRequired,
 }
 
 const List = styled.ul`

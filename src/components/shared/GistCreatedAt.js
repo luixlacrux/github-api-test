@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import moment from 'moment'
 
@@ -8,6 +9,10 @@ const GistCreatedAt = ({ createdAt }) => {
       Created at {moment(createdAt).format("MMM Do YY")}
     </Time>
   )
+}
+
+GistCreatedAt.propTypes = {
+  createdAt: PropTypes.string.isRequired,
 }
 
 const Time = styled.time`
