@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-export const SHOW_GISTS = 'SHOW_GISTS'
+export const FETCH_GISTS = 'FETCH_GISTS'
 
-export function showGists () {
+export function fetchGists () {
   return async (dispatch, getState) => {
     const response = await axios.get('https://api.github.com/gists')
-    dispatch({ type: SHOW_GISTS, payload: response.data })
+    dispatch({ type: FETCH_GISTS, payload: response.data })
   }
 }

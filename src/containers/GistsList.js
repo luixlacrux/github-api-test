@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { showGists } from '../actions'
+import { fetchGists } from '../actions'
 
 class GistsList extends Component {
   componentWillMount () {
-    this.props.showGists()
+    this.props.fetchGists()
   }
 
   render () {
@@ -24,4 +24,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, { showGists })(GistsList)
+export default connect(mapStateToProps, { fetchGists })(GistsList)
