@@ -2,21 +2,18 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { showGists } from '../actions'
 
-class App extends Component {
+class GistsList extends Component {
   componentWillMount () {
     this.props.showGists()
   }
 
   render () {
     return (
-      <div>
-        <h2>Gists List</h2>
-        <ul>
-        {this.props.gists.map(gist => (
+      <ul>
+        {this.props.gists.map(gist =>
           <li key={gist.id}>{gist.description}</li>
-        ))}
-        </ul>
-      </div>
+        )}
+      </ul>
     )
   }
 }
@@ -27,4 +24,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, { showGists })(App)
+export default connect(mapStateToProps, { showGists })(GistsList)
