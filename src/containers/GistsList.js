@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchGists } from '../actions'
 
+import Pagination from '../components/Pagination'
+
 class GistsList extends Component {
   constructor (props) {
     super(props)
@@ -26,11 +28,13 @@ class GistsList extends Component {
 
   render () {
     const { linkPages, gists, isFetching } = this.props
-    if (isFetching) return <h4>Loading...</h4>
     return (
       <div>
+        {isFetching &&
+          <h4>Loading...</h4>
+        }
         <ul>
-          {gists.map(gist => (
+          {!isFetching && gists.length > 0 && gists.map(gist => (
             <li key={gist.id}>
               <Link to={`/gists/${gist.id}`}>
                 {gist.description}
@@ -38,10 +42,11 @@ class GistsList extends Component {
             </li>
           ))}
         </ul>
-        <footer>
-          { linkPages.prev && <button onClick={this.prevPage}>Back</button> }
-          { linkPages.next && <button onClick={this.nextPage}>Next</button> }
-        </footer>
+        <Pagination
+          onNext={this.nextPage}
+          onBack={this.prevPage}
+          linkPages={linkPages}
+        />
       </div>
     )
   }
