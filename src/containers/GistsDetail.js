@@ -3,24 +3,36 @@ import { connect } from 'react-redux'
 import { fetchGistItem } from '../actions'
 
 class GistsDetail extends Component {
-  componentWillMount () {
+  componentDidMount () {
     const { id } = this.props.match.params
     this.props.fetchData(id)
   }
 
   render () {
+    const { gist, isFetching } = this.props
+    if (isFetching) return <h4>Loading...</h4>
+
     return (
       <div>
-        <h4>{this.props.gist.description}</h4>
-        <span>Create at {this.props.gist.created_at}</span>
+        <h4>{gist.description}</h4>
+        <span>Create at {gist.created_at}</span>
       </div>
     )
   }
 }
 
 function mapStateToProps (state) {
+  const {
+    data: gist,
+    isFetching,
+  } = state.gist || {
+    data: {},
+    isFetching: true,
+  }
+
   return {
-    gist: state.gist.data
+    gist,
+    isFetching,
   }
 }
 

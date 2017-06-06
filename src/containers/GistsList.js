@@ -10,7 +10,7 @@ class GistsList extends Component {
     this.prevPage = this.prevPage.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this.props.fetchData()
   }
 
@@ -25,9 +25,8 @@ class GistsList extends Component {
   }
 
   render () {
-    const { linkPages, gists } = this.props
-    if (!gists.length) return <h1>loading...</h1>
-
+    const { linkPages, gists, isFetching } = this.props
+    if (isFetching) return <h4>Loading...</h4>
     return (
       <div>
         <ul>
@@ -49,10 +48,19 @@ class GistsList extends Component {
 }
 
 function mapStateToProps (state) {
-  const { list, linkPages } = state.gists
-  return {
-    gists: list,
+  const {
+    list: gists,
     linkPages,
+    isFetching
+  } = state.gists || {
+    isFetching: true,
+    items: [],
+  }
+
+  return {
+    gists,
+    linkPages,
+    isFetching,
   }
 }
 
