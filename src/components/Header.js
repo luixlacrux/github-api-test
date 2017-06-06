@@ -13,7 +13,7 @@ const Wrapper = styled.header`
   padding: 1em;
   h1 {
     margin: 0 auto;
-    max-height: 1000px;
+    max-width: 1000px;
   }
   span {
     font-weight: lighter;
