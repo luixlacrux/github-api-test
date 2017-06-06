@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { fetchGists } from '../actions'
 
 import Pagination from '../components/Pagination'
+import Gists from '../components/Gists'
 
 class GistsList extends Component {
   constructor (props) {
@@ -33,15 +33,9 @@ class GistsList extends Component {
         {isFetching &&
           <h4>Loading...</h4>
         }
-        <ul>
-          {!isFetching && gists.length > 0 && gists.map(gist => (
-            <li key={gist.id}>
-              <Link to={`/gists/${gist.id}`}>
-                {gist.description}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {!isFetching &&
+          <Gists gists={gists} />
+        }
         <Pagination
           onNext={this.nextPage}
           onBack={this.prevPage}

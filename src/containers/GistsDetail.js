@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchGistItem } from '../actions'
 
+import GistInfo from '../components/GistInfo'
+
 class GistsDetail extends Component {
   componentDidMount () {
     const { id } = this.props.match.params
@@ -13,10 +15,7 @@ class GistsDetail extends Component {
     if (isFetching) return <h4>Loading...</h4>
 
     return (
-      <div>
-        <h4>{gist.description}</h4>
-        <span>Create at {gist.created_at}</span>
-      </div>
+      <GistInfo gist={gist} />
     )
   }
 }

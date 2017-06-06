@@ -25,7 +25,7 @@ export function showGists(state = initialState, action) {
 
 export function showGistItem(state = {
   data: {},
-  isFetching: false,
+  isFetching: true,
 }, action) {
   switch (action.type) {
     case REQUEST_GIST_ITEM:
