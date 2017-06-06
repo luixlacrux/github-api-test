@@ -22,3 +22,24 @@ export function fetchGists (url = endpoint) {
     dispatch(showGists(response.data, linkPages))
   }
 }
+
+// Gist item detail
+
+export const SHOW_GIST_ITEM = 'SHOW_GIST_ITEM'
+
+export function showGistItem (gist) {
+  return {
+    type: SHOW_GIST_ITEM,
+    gist,
+  }
+}
+
+export const FETCH_GIST_ITEM = 'FETCH_GIST_ITEM'
+
+export function fetchGistItem (id) {
+  return dispatch => {
+    axios.get(`${endpoint}/${id}`)
+      .then(gist => dispatch(showGistItem(gist.data)))
+      .catch(e => console.error(e))
+  }
+}

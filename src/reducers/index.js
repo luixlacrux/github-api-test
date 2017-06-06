@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import { showGists } from './gists'
+import { showGists, showGistItem } from './gists'
 
 const rootReducer = combineReducers({
-  gists: showGists
+  gists: showGists,
+  gist: showGistItem,
 })
 
 export default rootReducer

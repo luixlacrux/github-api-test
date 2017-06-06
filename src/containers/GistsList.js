@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { fetchGists } from '../actions'
 
 class GistsList extends Component {
@@ -30,9 +31,13 @@ class GistsList extends Component {
     return (
       <div>
         <ul>
-          {gists.map(gist =>
-            <li key={gist.id}>{gist.description}</li>
-          )}
+          {gists.map(gist => (
+            <li key={gist.id}>
+              <Link to={`/gists/${gist.id}`}>
+                {gist.description}
+              </Link>
+            </li>
+          ))}
         </ul>
         <footer>
           { linkPages.prev && <button onClick={this.prevPage}>Back</button> }
