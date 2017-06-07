@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import GistBottomInfo from './shared/GistBottomInfo'
 
@@ -9,6 +10,8 @@ const GistInfo = ({ gist }) => {
   return (
     <section>
       <Title>
+        <Link to="/" className="light">Gists</Link>
+        <span className="divider"> / </span>
         <a href={gist.html_url} target="_blank" rel="noopener noreferrer">
           {gist.description || 'Untitled'}
         </a>
@@ -30,6 +33,13 @@ const GistInfo = ({ gist }) => {
 
 const Title = styled.h1`
   font-size: 20px;
+  .light {
+    font-weight: normal;
+  }
+  .divider {
+    color: #777;
+    font-size: 16px;
+  }
 `
 
 export default GistInfo
