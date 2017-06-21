@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import axios from 'axios'
 
 import GistInfo from '../components/GistInfo'
@@ -44,6 +45,14 @@ class GistDetail extends Component {
       <GistInfo {...gist} />
     )
   }
+}
+
+GistDetail.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired
 }
 
 export default GistDetail

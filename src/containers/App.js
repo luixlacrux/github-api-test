@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import Pages from '../Pages'
+import Pages from '../pages'
 import Header from '../components/Header'
 
 const App = () => {

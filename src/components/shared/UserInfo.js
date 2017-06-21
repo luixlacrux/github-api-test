@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import avatarDefault from '../../avatar-default.png'
@@ -16,6 +17,14 @@ const UserInfo = (props) => {
       </Name>
     </User>
   )
+}
+
+UserInfo.propTypes = {
+  owner: PropTypes.shape({
+    avatar_url: PropTypes.string,
+    html_url: PropTypes.string.isRequired,
+    login: PropTypes.string.isRequired,
+  })
 }
 
 const User = styled.div`

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Pagination = ({ activePage, nextPage, backPage }) => {
@@ -12,6 +13,12 @@ const Pagination = ({ activePage, nextPage, backPage }) => {
       </Button>
     </Wrapper>
   )
+}
+
+Pagination.propTypes = {
+  activePage: PropTypes.number,
+  nextPage: PropTypes.func.isRequired,
+  backPage: PropTypes.func.isRequired,
 }
 
 const Wrapper = styled.ul`
